@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/Ordbogen.png</file>
+        <file>res/credentials.json</file>
+    </qresource>
+</RCC>
