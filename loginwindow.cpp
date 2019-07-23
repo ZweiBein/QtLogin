@@ -19,16 +19,6 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
-void LoginWindow::on_lineEditLogin_returnPressed()
-{
-    this->HandleLogin();
-}
-
-void LoginWindow::on_lineEditPassword_returnPressed()
-{
-    this->HandleLogin();
-}
-
 void LoginWindow::on_pushButtonCancel_clicked()
 {
     QString message = "Access Denied";
@@ -55,7 +45,6 @@ void LoginWindow::HandleLogin(){
     if (!user.isEmpty() && !password.isEmpty()){
         if (this->ValidateCredentials(user, password)){
             this->DisplayMessageBox("Welcome", "Ok");
-            this->hide();
             return;
         }
     }

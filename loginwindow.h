@@ -21,10 +21,6 @@ private slots:
 
     void on_pushButtonOk_clicked();
 
-    void on_lineEditLogin_returnPressed();
-
-    void on_lineEditPassword_returnPressed();
-
 private:
     Ui::LoginWindow *ui;
     void HandleLogin();

@@ -69,6 +69,9 @@
        <property name="text">
         <string>Ok</string>
        </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -104,6 +107,9 @@
        <property name="text">
         <string>Cancel</string>
        </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
     </layout>
@@ -114,5 +120,38 @@
  <resources>
   <include location="login.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>lineEditLogin</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButtonOk</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>183</x>
+     <y>83</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEditPassword</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButtonOk</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>46</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>201</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
