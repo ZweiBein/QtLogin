@@ -26,8 +26,8 @@ void LoginWindow::on_pushButtonCancel_clicked()
 
 void LoginWindow::on_pushButtonOk_clicked()
 {
-   QString user = ui->lineEditLogin->text();
-   QString password = ui->lineEditPassword->text();
+   QString user = ui->lineEditLogin->text().trimmed();
+   QString password = ui->lineEditPassword->text().trimmed();
    this->HandleLogin(user, password);
 }
 
@@ -47,6 +47,7 @@ void LoginWindow::HandleLogin(QString user, QString password)
         if (validated)
         {
             this->DisplayMessageBox("Welcome", "Ok");
+            //Do something
             return;
         }
     }
@@ -65,7 +66,6 @@ QJsonObject LoginWindow::LoadCredentialsJSON()
     QByteArray jsonBytes = jsonString.toUtf8();
     QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonBytes);
     return jsonDoc.object();
-
 }
 
 bool LoginWindow::ValidateCredentials(QString user, QString password)
