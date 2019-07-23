@@ -41,13 +41,15 @@ void LoginWindow::DisplayMessageBox(QString message, QString buttonMessage)
 
 void LoginWindow::HandleLogin(QString user, QString password)
 {
-    if (!user.isEmpty() && !password.isEmpty()){
-        if (this->ValidateCredentials(user, password)){
+    if (!user.isEmpty() && !password.isEmpty())
+    {
+        bool validated = this->ValidateCredentials(user, password);
+        if (validated)
+        {
             this->DisplayMessageBox("Welcome", "Ok");
             return;
         }
     }
-
     this->DisplayMessageBox("Username and/or password mismatch");
 }
 
@@ -66,13 +68,14 @@ QJsonObject LoginWindow::LoadCredentialsJSON()
 
 }
 
-
 bool LoginWindow::ValidateCredentials(QString user, QString password)
 {
     QJsonObject users = this->LoadCredentialsJSON();
 
-    if (users.contains(user)){
-        if (users.value(user) == password){
+    if (users.contains(user))
+    {
+        if (users.value(user) == password)
+        {
             return true;
         }
     }
