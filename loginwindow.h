@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::LoginWindow *ui;
-    void HandleLogin();
+    void HandleLogin(QString user, QString password);
     void DisplayMessageBox(QString, QString buttonMessage = "Close");
     bool ValidateCredentials(QString, QString);
     QJsonObject LoadCredentialsJSON();

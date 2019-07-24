@@ -11,7 +11,6 @@ LoginWindow::LoginWindow(QWidget *parent) :
     ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
-
 }
 
 LoginWindow::~LoginWindow()
@@ -21,38 +20,42 @@ LoginWindow::~LoginWindow()
 
 void LoginWindow::on_pushButtonCancel_clicked()
 {
-    QString message = "Access Denied";
-    this->DisplayMessageBox(message);
+    this->DisplayMessageBox("Access Denied");
     this->close();
 }
 
 void LoginWindow::on_pushButtonOk_clicked()
 {
-   this->HandleLogin();
+   QString user = ui->lineEditLogin->text().trimmed();
+   QString password = ui->lineEditPassword->text().trimmed();
+   this->HandleLogin(user, password);
 }
 
-void LoginWindow::DisplayMessageBox(QString message, QString buttonMessage){
+void LoginWindow::DisplayMessageBox(QString message, QString buttonMessage)
+{
     QMessageBox msgBox;
     msgBox.setText(message);
     msgBox.addButton(buttonMessage, QMessageBox::ButtonRole::AcceptRole);
     msgBox.exec();
 }
 
-void LoginWindow::HandleLogin(){
-    QString user = ui->lineEditLogin->text();
-    QString password = ui->lineEditPassword->text();
-
-    if (!user.isEmpty() && !password.isEmpty()){
-        if (this->ValidateCredentials(user, password)){
+void LoginWindow::HandleLogin(QString user, QString password)
+{
+    if (!user.isEmpty() && !password.isEmpty())
+    {
+        bool validated = this->ValidateCredentials(user, password);
+        if (validated)
+        {
             this->DisplayMessageBox("Welcome", "Ok");
+            //Do something
             return;
         }
     }
-
     this->DisplayMessageBox("Username and/or password mismatch");
 }
 
-QJsonObject LoginWindow::LoadCredentialsJSON(){
+QJsonObject LoginWindow::LoadCredentialsJSON()
+{
     QFile credentialFile(":/res/credentials.json");
     credentialFile.open(QIODevice::ReadOnly);
 
@@ -63,15 +66,16 @@ QJsonObject LoginWindow::LoadCredentialsJSON(){
     QByteArray jsonBytes = jsonString.toUtf8();
     QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonBytes);
     return jsonDoc.object();
-
 }
 
-
-bool LoginWindow::ValidateCredentials(QString user, QString password){
+bool LoginWindow::ValidateCredentials(QString user, QString password)
+{
     QJsonObject users = this->LoadCredentialsJSON();
 
-    if (users.contains(user)){
-        if (users.value(user) == password){
+    if (users.contains(user))
+    {
+        if (users.value(user) == password)
+        {
             return true;
         }
     }
