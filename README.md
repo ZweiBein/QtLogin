@@ -4,7 +4,7 @@ It will also render web pages using QtWebEngine's Chromium backend, although the
 
 Made with Qt 5.12 in Qt Creator 4.9.2 and compiled with the included MSVC 2017 64 bit.
 
-Users logins:
+User logins:
 
 {
     "John": "secret",
