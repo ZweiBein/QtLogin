@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webenginewidgets
 
 TARGET = Login
 TEMPLATE = app
@@ -17,12 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++11
+# disable qml debugging just in case.
+CONFIG -= qml_debug
 
 SOURCES += \
+        browserwindow.cpp \
         main.cpp \
         loginwindow.cpp
 
 HEADERS += \
+        browserwindow.h \
         loginwindow.h
 
 FORMS += \

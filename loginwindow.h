@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QMessageBox>
 #include <QJsonObject>
+#include "browserwindow.h"
+
 namespace Ui {
 class LoginWindow;
 }
@@ -23,6 +25,7 @@ private slots:
 
 private:
     Ui::LoginWindow *ui;
+    BrowserWindow *browser;
     void HandleLogin(QString user, QString password);
     void DisplayMessageBox(QString, QString buttonMessage = "Close");
     bool ValidateCredentials(QString, QString);
