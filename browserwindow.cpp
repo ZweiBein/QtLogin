@@ -1,7 +1,8 @@
 #include <QtWebEngineWidgets>
 #include "browserwindow.h"
 
-BrowserWindow::BrowserWindow()
+BrowserWindow::BrowserWindow(QWidget *parent) :
+    QMainWindow(parent)
 {
     setAttribute(Qt::WA_DeleteOnClose, true);
     setWindowIcon(QIcon(":/res/Ordbogen.png"));
@@ -21,6 +22,11 @@ BrowserWindow::BrowserWindow()
     toolbar->addWidget(lineEditURL);
 
     setCentralWidget(view);
+}
+
+BrowserWindow::~BrowserWindow()
+{
+
 }
 
 void BrowserWindow::ChangeLocation()

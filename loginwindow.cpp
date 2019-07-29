@@ -47,7 +47,7 @@ void LoginWindow::HandleLogin(QString user, QString password)
         if (validated)
         {
             this->DisplayMessageBox("Welcome", "Ok");
-            browser = new BrowserWindow();
+            browser = new BrowserWindow(this);
             browser->resize(QGuiApplication::primaryScreen()->size() * 0.7);
             browser->show();
             this->hide();
