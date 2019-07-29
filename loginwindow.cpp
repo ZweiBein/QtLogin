@@ -47,7 +47,9 @@ void LoginWindow::HandleLogin(QString user, QString password)
         if (validated)
         {
             this->DisplayMessageBox("Welcome", "Ok");
-            browser = new BrowserWindow(this);
+
+            //passing in nullptr BrowserWindow is top level and will minimize properly.
+            browser = new BrowserWindow(nullptr);
             browser->resize(QGuiApplication::primaryScreen()->size() * 0.7);
             browser->show();
             this->hide();
