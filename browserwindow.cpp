@@ -16,7 +16,7 @@ BrowserWindow::BrowserWindow(QWidget *parent) :
     lineEditURL->setSizePolicy(QSizePolicy::Expanding, lineEditURL->sizePolicy().verticalPolicy());
     connect(lineEditURL, &QLineEdit::returnPressed, this, &BrowserWindow::ChangeLocation);
 
-    QToolBar *toolbar = new QToolBar(this);
+    toolbar = new QToolBar(this);
     addToolBar(Qt::TopToolBarArea, toolbar);
     toolbar->setMovable(false);
     toolbar->addWidget(lineEditURL);

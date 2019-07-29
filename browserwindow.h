@@ -25,6 +25,7 @@ protected slots:
 private:
     QWebEngineView *view;
     QLineEdit *lineEditURL;
+    QToolBar *toolbar;
 
 };
 

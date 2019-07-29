@@ -48,8 +48,8 @@ void LoginWindow::HandleLogin(QString user, QString password)
         {
             this->DisplayMessageBox("Welcome", "Ok");
 
-            //passing in nullptr BrowserWindow is top level and will minimize properly.
-            browser = new BrowserWindow(nullptr);
+            //passing in default nullptr to BrowserWindow so it's top level and will minimize to taskbar instead of parent.
+            browser = new BrowserWindow();
             browser->resize(QGuiApplication::primaryScreen()->size() * 0.7);
             browser->show();
             this->hide();
