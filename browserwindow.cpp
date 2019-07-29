@@ -7,7 +7,7 @@ BrowserWindow::BrowserWindow()
     setWindowIcon(QIcon(":/res/Ordbogen.png"));
 
     view = new QWebEngineView(this);
-    view->load(QUrl("http://www.google.com"));
+    view->load(QUrl("https://github.com/ZweiBein/QtLogin"));
     connect(view, &QWebEngineView::loadFinished, this, &BrowserWindow::SetURL);
     connect(view, &QWebEngineView::loadFinished, this, &BrowserWindow::SetTitle);
 
