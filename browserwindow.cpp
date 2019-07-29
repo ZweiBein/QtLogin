@@ -15,12 +15,13 @@ BrowserWindow::BrowserWindow()
     lineEditURL->setSizePolicy(QSizePolicy::Expanding, lineEditURL->sizePolicy().verticalPolicy());
     connect(lineEditURL, &QLineEdit::returnPressed, this, &BrowserWindow::ChangeLocation);
 
-    QToolBar *toolbar = addToolBar(tr("Navigation"));
+    QToolBar *toolbar = new QToolBar(this);
+    addToolBar(Qt::TopToolBarArea, toolbar);
+    toolbar->setMovable(false);
     toolbar->addWidget(lineEditURL);
 
     setCentralWidget(view);
 }
-
 
 void BrowserWindow::ChangeLocation()
 {
