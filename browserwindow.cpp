@@ -38,7 +38,7 @@ void BrowserWindow::ChangeLocation()
 
 void BrowserWindow::SetTitle()
 {
-    QString title = view->title().isEmpty() ? "Browser" : view->title();
+    QString title = view->title().isEmpty() ? tr("Browser") : view->title();
     setWindowTitle(title);
 }
 

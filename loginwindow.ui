@@ -21,7 +21,7 @@
    <item>
     <layout class="QFormLayout" name="formLayoutContent">
      <item row="0" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="labelUser">
        <property name="text">
         <string>Login:</string>
        </property>
@@ -31,7 +31,7 @@
       <widget class="QLineEdit" name="lineEditLogin"/>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="labelPassword">
        <property name="text">
         <string>Password:</string>
        </property>
@@ -48,6 +48,20 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayoutButtons">
+     <item>
+      <widget class="QComboBox" name="comboBoxLocales">
+       <item>
+        <property name="text">
+         <string>DK</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>EN</string>
+        </property>
+       </item>
+      </widget>
+     </item>
      <item>
       <spacer name="horizontalSpacerLeft">
        <property name="orientation">

@@ -8,19 +8,29 @@
 
 LoginWindow::LoginWindow(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::LoginWindow)
+    ui(new Ui::LoginWindow),
+    translator(new QTranslator)
 {
     ui->setupUi(this);
+    this->HandleLanguageChange(ui->comboBoxLocales->currentText());
 }
 
 LoginWindow::~LoginWindow()
 {
     delete ui;
+    delete translator;
+    // 'browser' does not need to be deleted since it includes 'setAttribute(Qt::WA_DeleteOnClose, true);'.
+    // I think.
+}
+
+void LoginWindow::on_comboBoxLocales_currentIndexChanged(const QString &selectedLocale)
+{
+    this->HandleLanguageChange(selectedLocale);
 }
 
 void LoginWindow::on_pushButtonCancel_clicked()
 {
-    this->DisplayMessageBox("Access Denied");
+    this->DisplayMessageBox(tr("Access Denied"));
     this->close();
 }
 
@@ -36,27 +46,46 @@ void LoginWindow::DisplayMessageBox(QString message, QString buttonMessage)
     QMessageBox msgBox;
     msgBox.setText(message);
     msgBox.addButton(buttonMessage, QMessageBox::ButtonRole::AcceptRole);
-    msgBox.exec();
+    msgBox.exec();    
+}
+
+void LoginWindow::HandleLanguageChange(QString selectedLocale)
+{
+    QStringList locales = { "dk", "en" };
+
+    switch (locales.indexOf(selectedLocale.toLower()))
+    {
+        case 0:
+        translator->load(":/res/login_dk.qm");
+        qApp->installTranslator(translator);
+        break;
+
+        case 1:
+        translator->load("");
+        break;
+    }
+    ui->retranslateUi(this);
 }
 
 void LoginWindow::HandleLogin(QString user, QString password)
 {
-    if (!user.isEmpty() && !password.isEmpty())
-    {
-        bool validated = this->ValidateCredentials(user, password);
-        if (validated)
-        {
-            this->DisplayMessageBox("Welcome", "Ok");
+    bool validated = !user.isEmpty() && !password.isEmpty() ? this->ValidateCredentials(user, password) : false;
 
-            //passing in default nullptr to BrowserWindow so it's top level and will minimize to taskbar instead of parent.
-            browser = new BrowserWindow();
-            browser->resize(QGuiApplication::primaryScreen()->size() * 0.7);
-            browser->show();
-            this->hide();
-            return;
-        }
+    if (validated)
+    {
+        this->DisplayMessageBox(tr("Welcome"), tr("Ok"));
+
+        //passing in default nullptr to BrowserWindow so it's top level and will minimize to taskbar instead of parent.
+        browser = new BrowserWindow();
+        browser->resize(QGuiApplication::primaryScreen()->size() * 0.7);
+        browser->show();
+        this->hide();
     }
-    this->DisplayMessageBox("Username and/or password mismatch");
+    else
+    {
+        this->DisplayMessageBox(tr("Username and/or password mismatch"));
+    }
+
 }
 
 QJsonObject LoginWindow::LoadCredentialsJSON()
@@ -86,3 +115,5 @@ bool LoginWindow::ValidateCredentials(QString user, QString password)
     }
     return false;
 }
+
+

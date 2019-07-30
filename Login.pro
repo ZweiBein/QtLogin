@@ -40,5 +40,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     login.qrc
 
+TRANSLATIONS += login_dk.ts
+
 DISTFILES += \
-    README.md
+    README.md \
+    login_dk.ts
