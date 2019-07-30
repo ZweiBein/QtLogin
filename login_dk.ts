@@ -38,7 +38,7 @@
     </message>
     <message>
         <location filename="loginwindow.ui" line="84"/>
-        <location filename="loginwindow.cpp" line="49"/>
+        <location filename="loginwindow.cpp" line="76"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
@@ -48,17 +48,17 @@
         <translation type="unfinished">Afbryd</translation>
     </message>
     <message>
-        <location filename="loginwindow.cpp" line="23"/>
+        <location filename="loginwindow.cpp" line="33"/>
         <source>Access Denied</source>
         <translation type="unfinished">Ingen Adgang</translation>
     </message>
     <message>
-        <location filename="loginwindow.cpp" line="49"/>
+        <location filename="loginwindow.cpp" line="76"/>
         <source>Welcome</source>
         <translation type="unfinished">Velkommen</translation>
     </message>
     <message>
-        <location filename="loginwindow.cpp" line="59"/>
+        <location filename="loginwindow.cpp" line="86"/>
         <source>Username and/or password mismatch</source>
         <translation type="unfinished">Forkert brugernavn og/eller kodeord</translation>
     </message>
