@@ -70,7 +70,11 @@ void LoginWindow::HandleLogin(QString user, QString password)
 {
     bool validated = !user.isEmpty() && !password.isEmpty() ? this->ValidateCredentials(user, password) : false;
 
-    if (validated)
+    if (!validated)
+    {
+        this->DisplayMessageBox(tr("Username and/or password mismatch"));
+    }
+    else
     {
         this->DisplayMessageBox(tr("Welcome"), tr("Ok"));
 
@@ -79,10 +83,6 @@ void LoginWindow::HandleLogin(QString user, QString password)
         browser->resize(QGuiApplication::primaryScreen()->size() * 0.7);
         browser->show();
         this->hide();
-    }
-    else
-    {
-        this->DisplayMessageBox(tr("Username and/or password mismatch"));
     }
 
 }
