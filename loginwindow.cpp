@@ -60,7 +60,7 @@ void LoginWindow::HandleLanguageChange(QString selectedLocale)
 
         case 1:
         default:
-        translator->load("");
+        qApp->removeTranslator(translator);
         break;
     }
     ui->retranslateUi(this);
