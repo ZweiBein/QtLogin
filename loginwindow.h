@@ -2,7 +2,7 @@
 #define LOGINWINDOW_H
 
 #include <QWidget>
-#include <QMessageBox>
+//#include <QMessageBox>
 #include <QJsonObject>
 #include <QTranslator>
 #include "browserwindow.h"

@@ -2,9 +2,7 @@
 #include "ui_loginwindow.h"
 #include <QMessageBox>
 #include <QFile>
-#include <QTextStream>
 #include <QJsonDocument>
-#include <QJsonObject>
 
 LoginWindow::LoginWindow(QWidget *parent) :
     QWidget(parent),
