@@ -59,6 +59,7 @@ void LoginWindow::HandleLanguageChange(QString selectedLocale)
         break;
 
         case 1:
+        default:
         translator->load("");
         break;
     }
